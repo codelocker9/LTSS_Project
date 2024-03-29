@@ -14,9 +14,9 @@ const status = document.getElementById("status");
 
 // Allocate a pipeline for sentiment-analysis
 
-send_btn.addEventListener('click', (event) => {
-    let pipe = pipeline('sentiment-analysis');
-    // let out = pipe(text);
+send_btn.addEventListener('click', async (event) => {
+    let pipe = await pipeline('sentiment-analysis');
     let text = prompt('enter a text.');
+    let out = await pipe(text);
     // alert(out);
 });
