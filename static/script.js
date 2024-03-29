@@ -18,5 +18,5 @@ send_btn.addEventListener('click', async (event) => {
     let pipe = await pipeline('sentiment-analysis');
     let text = prompt('enter a text.');
     let out = await pipe(text);
-    // alert(out);
+    alert(out);
 });
