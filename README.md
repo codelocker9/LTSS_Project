@@ -1,2 +1,2 @@
 # LTSS_Project
-The school's website.
+The school's very own chatbot, Model One.
