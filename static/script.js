@@ -7,7 +7,16 @@ const input = document.getElementById("text-input");
 const send_btn = document.getElementById("send-input");
 const status = document.getElementById("status");
 
-// Creating an object detection pipeline
-status.textContent = "Loading model...";
-const model_one = await pipeline("text-generation", "google/gemma-7b-it");
-status.textContent = "Ready";
+// // Creating an object detection pipeline
+// status.textContent = "Loading model...";
+// const model_one = await pipeline("text-generation", "google/gemma-7b-it");
+// status.textContent = "Ready";
+
+// Allocate a pipeline for sentiment-analysis
+
+send_btn.addEventListener('click', (event) => {
+    let pipe = pipeline('sentiment-analysis');
+    // let out = pipe(text);
+    let text = prompt('enter a text.');
+    // alert(out);
+});
