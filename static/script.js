@@ -6,11 +6,22 @@ const input = document.getElementById("text-input");
 const send_btn = document.getElementById("send-input");
 const status = document.getElementById("status");
 
-// // Creating an object detection pipeline
+// Loading the model
+status.textContent = "Loading model...";
+const model_one = await pipeline("text-generation");
+status.textContent = "Ready";
 
-// Allocate a pipeline for sentiment-analysis
 send_btn.addEventListener('click', async (event) => {
-    status.textContent = "Loading model...";
-    const model_one = await pipeline("text-generation", "HuggingFaceH4/zephyr-7b-beta");
-    status.textContent = "Ready";
+    // status.textContent = await model_one(input);
+    const userInput = input.value;
+
+    const escapedUserInput = encodeURIComponent(userInput); // Escape user input here
+    status.textContent = "Generating text...";
+    const outputText = await model_one(escapedUserInput);
+    const textNode = document.createTextNode(outputText);
+    const newElement = document.createElement("p"); // Or any other element
+    newElement.appendChild(textNode);
+    console.log(outputText);
+    status.innerHTML = ""; // Clear any previous content
+    status.appendChild(newElement);
 });
