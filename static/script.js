@@ -1,15 +1,14 @@
 import { pipeline, env } from "https://cdn.jsdelivr.net/npm/@xenova/transformers@2.6.0";
-
 env.allowLocalModels = false;
+env.HUGGINGFACEHUB_API_KEY = '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';
 
 const input = document.getElementById("text-input");
 const send_btn = document.getElementById("send-input");
 const status = document.getElementById("status");
-// const newElement = document.createElement("p"); // Or any other element
 
 // Loading the model
 status.textContent = "Loading model...";
-const model_one = await pipeline("text-generation");
+const model_one = await pipeline("text-generation", "facebook/bart-base-squad2");
 status.textContent = "Ready";
 
 send_btn.addEventListener('click', async (event) => {
