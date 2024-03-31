@@ -8,7 +8,7 @@ const status = document.getElementById("status");
 
 // Loading the model
 status.textContent = "Loading model...";
-const model_one = await pipeline("text-generation", "facebook/bart-base-squad2");
+const model_one = await pipeline("text-generation");
 status.textContent = "Ready";
 
 send_btn.addEventListener('click', async (event) => {
@@ -16,6 +16,7 @@ send_btn.addEventListener('click', async (event) => {
     const escapedUserInput = encodeURIComponent(userInput); // Escape user input here
     status.textContent = "Generating text...";
     const outputText = await model_one(escapedUserInput);
-    const textNode = outputText[0].generated_text;
-    status.textContent = textNode;
+    console.log(outputText);
+    // const textNode = consolel;
+    // status.textContent = textNode;
 });
