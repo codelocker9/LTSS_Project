@@ -1,22 +1,7 @@
-import { pipeline, env } from "https://cdn.jsdelivr.net/npm/@xenova/transformers@2.6.0";
-env.allowLocalModels = false;
-env.HUGGINGFACEHUB_API_KEY = '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';
+import { HfInference } from "@Huggingface/Inference"
+import dotenv from "dotenv";
 
-const input = document.getElementById("text-input");
-const send_btn = document.getElementById("send-input");
-const status = document.getElementById("status");
+dotenv.config();
 
-// Loading the model
-status.textContent = "Loading model...";
-const model_one = await pipeline("text-generation");
-status.textContent = "Ready";
-
-send_btn.addEventListener('click', async (event) => {
-    const userInput = input.value;
-    const escapedUserInput = encodeURIComponent(userInput); // Escape user input here
-    status.textContent = "Generating text...";
-    const outputText = await model_one(escapedUserInput);
-    console.log(outputText);
-    // const textNode = consolel;
-    // status.textContent = textNode;
-});
+const HF_ACCESS_TOKEN = "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";
+const infe
